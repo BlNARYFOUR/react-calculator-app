@@ -10,6 +10,14 @@ function App() {
   const [result, setResult] = useState(0);
   const [error, setError] = useState(false);
 
+  const onUpdateNumberInput = (e) => {
+    e.preventDefault();
+
+    if('' !== inputRef.current.value) {
+      setError(false);
+    }
+  }
+
   const doAction = (e, action) => {
     e.preventDefault();
 
@@ -19,7 +27,6 @@ function App() {
       return;
     }
 
-    setError(false);
     action();
   };
 
@@ -65,6 +72,7 @@ function App() {
               ref={inputRef}
               type="number"
               placeholder="Type a number"
+              onInput={onUpdateNumberInput}
           />
           <button onClick={(e) => doAction(e, plus)}>add</button>
           <button onClick={(e) => doAction(e, minus)}>subtract</button>
