@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# Getting Started with Calculator App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+
+- As an extra, I added an error log if the number input field is empty.
+Thus, preventing unwanted bugs.
+  - I added an extra state `const [error, setError] = useState(false);`
+  - The `error` state is used to conditionally show the error `<p>` tag.
+- The calculation methods are no longer eventHandler methods, but have been refactored to callables.
+- The `doAction(e, action)`method has been added as eventHandler method, which takes an `Event` and `Callable` as parameters.
+  - If the number input field is empty, it uses `setError(true)` to show the error message.
+  - Else, it calls the given calculation action `action()`.
+- The `<input>` tag got the extra prop `onInput={onUpdateNumberInput}`
+  - When the number input field is not empty, the method `onUpdateNumberInput(e)` hides the error message using `setError(false)`.
 
 ## Available Scripts
 
